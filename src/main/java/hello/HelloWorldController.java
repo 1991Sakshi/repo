@@ -6,25 +6,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
-
-
-
-
-
 
 @Controller
 @RequestMapping("/webhook")
 public class HelloWorldController {
 
-    @SuppressWarnings("unchecked")
-	@RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody WebhookResponse webhook(@RequestBody String obj){
-        ObjectMapper objectMapper = new ObjectMapper();
-        return new WebhookResponse("Hello!"+obj, "Text " + obj);
-    }//webhookResponse
+
+        System.out.println(obj);
+        ObjectMapper o=new ObjectMapper();
+        return new WebhookResponse("Hello! " + obj, "Text " + obj);
+    }//webhook
 }
